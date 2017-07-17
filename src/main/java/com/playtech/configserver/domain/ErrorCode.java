@@ -12,8 +12,10 @@ import java.io.Serializable;
 @Value
 @Document(collection = "error_code")
 public class ErrorCode implements Serializable {
-    @Id
-    private Integer id;
+
+    @Id private Integer id;
+
+    private Integer eId;
 
     private String code;
 

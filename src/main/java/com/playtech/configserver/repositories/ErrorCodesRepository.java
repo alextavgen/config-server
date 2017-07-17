@@ -13,6 +13,6 @@ import java.util.List;
  * Created by aleksandr on 17/07/2017.
  */
 @RepositoryRestResource(collectionResourceRel = "error_codes", path = "error_codes")
-public interface ErrorCodesRepository extends MongoRepository<ErrorCodes, String> {
+public interface ErrorCodesRepository extends CrudRepository<ErrorCodes, String> {
     List<ErrorCodes> findByReview(@Param("review") Date review);
 }
