@@ -39,7 +39,7 @@ class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .httpBasic().and()
                 .authorizeRequests()
-                .antMatchers(HttpMethod.POST, "/error_codes").hasRole("ADMIN")
+                //.antMatchers(HttpMethod.POST, "/error_codes").hasRole("ADMIN")
                 .antMatchers(HttpMethod.PUT, "/error_codes/**").hasRole("ADMIN")
                 .antMatchers(HttpMethod.PATCH, "/error_codes/**").hasRole("ADMIN").and()
                 .csrf().disable();

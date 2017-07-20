@@ -15,8 +15,6 @@ public class ErrorCode implements Serializable {
 
     @Id private Integer id;
 
-    private Integer eId;
-
     private String code;
 
     private String descr;

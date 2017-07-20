@@ -19,16 +19,16 @@ import java.util.List;
 /**
  * Created by aleksandr on 17/07/2017.
  */
-@SpringUI()
+@SpringUI(path="/ui")
 @Theme("valo")
 public class ErrorCodeUI extends UI{
-    @WebServlet(value = "/testvaadin", asyncSupported = true)
+    /*@WebServlet(value = "/testvaadin", asyncSupported = true)
     @VaadinServletConfiguration(productionMode = false, ui = ErrorCodeUI.class)
     public static class Servlet extends SpringVaadinServlet {
         {
             setServiceUrlPath("/testvaadin");
         }
-    }
+    }*/
     private final ErrorCodeRepository repo;
 
     private final ErrorCodeEditor editor;
@@ -72,7 +72,7 @@ public class ErrorCodeUI extends UI{
         });
 
         // Instantiate and edit new Customer the new button is clicked
-        addNewBtn.addClickListener(e -> editor.editCustomer(new ErrorCode(null, null,"", "","")));
+        addNewBtn.addClickListener(e -> editor.editCustomer(new ErrorCode(null, "","", "")));
 
         // Listen changes made by the editor, refresh data from backend
         editor.setChangeHandler(() -> {
