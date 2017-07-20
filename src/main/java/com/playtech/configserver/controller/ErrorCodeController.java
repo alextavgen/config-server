@@ -4,6 +4,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.playtech.configserver.domain.ErrorCode;
 import com.playtech.configserver.repositories.ErrorCodeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.*;
@@ -61,7 +63,7 @@ public class ErrorCodeController {
     }
 
     @CrossOrigin(origins = CORS_HOST)
-    @RequestMapping(method = RequestMethod.PUT, consumes = "text/plain", produces="application/json")
+    @RequestMapping(method = RequestMethod.PUT, consumes = "application/json", produces="application/json")
     public @ResponseBody ErrorCode putErrorCode(@RequestBody String corsRequest) {
         ErrorCode errCode = null;
         ObjectMapper mapper = new ObjectMapper();
@@ -74,5 +76,17 @@ public class ErrorCodeController {
 
         return errCode;
     }
+    @CrossOrigin(origins = CORS_HOST)
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE, consumes = "application/json", produces="application/json")
+    public ResponseEntity<?> deleteErrorCode(@PathVariable("id") Integer id) {
+        try{
+            Integer idReturned = repo.deleteErrorCodeById(id);
+            return new ResponseEntity<>(idReturned, HttpStatus.OK);
+        }catch(Exception ex){
+            String errorMessage;
+            errorMessage = ex.toString() ;
+            return new ResponseEntity<>(errorMessage, HttpStatus.BAD_REQUEST);
+        }
 
+    }
 }
