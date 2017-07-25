@@ -25,8 +25,8 @@ public class ErrorCodeTest {
 
     @Test
     public void testErrorCodes(){
-        ErrorCode code = new ErrorCode(0,"ERR_OK", "Ok", "ims.org");
-        ErrorCode code2 = new ErrorCode(7, "ERR_SYSTEM", "System Error", "ims.org");
+        ErrorCode code = new ErrorCode(0,"ERR_OK", "Ok", "ims.org", 1L);
+        ErrorCode code2 = new ErrorCode(7, "ERR_SYSTEM", "System Error", "ims.org", 2L);
         repository.save(code);
         repository.save(code2);
 

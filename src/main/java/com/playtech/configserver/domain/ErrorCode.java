@@ -1,7 +1,9 @@
 package com.playtech.configserver.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Value;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Version;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
@@ -20,4 +22,8 @@ public class ErrorCode implements Serializable {
     private String descr;
 
     private String group;
+
+    private @Version
+    @JsonIgnore
+    Long version;
 }

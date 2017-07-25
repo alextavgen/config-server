@@ -57,21 +57,7 @@
 			<artifactId>de.flapdoodle.embed.mongo</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
-			<groupId>com.vaadin</groupId>
-			<artifactId>vaadin-spring</artifactId>
-			<version>1.0.0</version>
-		</dependency>
-		<dependency>
-			<groupId>com.vaadin</groupId>
-			<artifactId>vaadin-server</artifactId>
-			<version>8.0.6</version>
-		</dependency>
-		<dependency>
-			<groupId>com.vaadin</groupId>
-			<artifactId>vaadin-client-compiled</artifactId>
-			<version>8.0.6</version>
-		</dependency>
+
 
 		<!-- Optional for extending client-side See: https://vaadin.com/book/-/page/clientside.html
         <dependency>
@@ -91,11 +77,6 @@
         </dependency>
         -->
 
-		<dependency>
-			<groupId>com.vaadin</groupId>
-			<artifactId>vaadin-themes</artifactId>
-			<version>8.0.6</version>
-		</dependency>
 
 		<!-- Optional push support for communication See: https://vaadin.com/book/-/page/advanced.push.html
         <dependency>

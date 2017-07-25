@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Created by aleksandr on 17/07/2017.
  */
-@RepositoryRestResource(collectionResourceRel = "error_code", path = "error_codes")
+@RepositoryRestResource(collectionResourceRel = "error_code", path = "error_code")
 public interface ErrorCodeRepository extends MongoRepository<ErrorCode, String> {
     ErrorCode findByCode(@Param("code") String code);
     ErrorCode findById (@Param ("id") Integer id);
