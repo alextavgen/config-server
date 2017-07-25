@@ -28,7 +28,7 @@ import java.util.stream.Stream;
 @CrossOrigin(maxAge = 3600)
 public class LimitedSetController {
 
-    private static final String DATE_TIME_FORMAT = "yyyy-MM-dd HH:mm:ss"
+    private static final String DATE_TIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
     private static final String CORS_HOST = "http://localhost:3004";
     @Autowired
     private  LimitedSetRepository repo;
