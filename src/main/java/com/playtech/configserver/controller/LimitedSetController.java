@@ -1,5 +1,6 @@
 package com.playtech.configserver.controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.playtech.configserver.domain.ErrorCode;
 import com.playtech.configserver.domain.LimitedSet;
 import com.playtech.configserver.repositories.ErrorCodeRepository;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
@@ -67,6 +69,24 @@ public class LimitedSetController {
                 .map(e -> e.format(formatter))
                 .collect(Collectors.toList());
 
+    }
+
+    @CrossOrigin(origins = CORS_HOST)
+    @RequestMapping(value = "/licensees/{licensee}", method = RequestMethod.POST, consumes = "text/plain", produces="application/json")
+    public @ResponseBody LimitedSet postNewLimitedSet(@PathVariable("licensee") String licensee, @RequestBody String corsRequest) {
+        LimitedSet set = null;
+        LimitedSet newSet = null;
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            set = mapper.readValue(corsRequest, LimitedSet.class);
+            System.out.println(set);
+            newSet = new LimitedSet(null, LocalDateTime.now().withNano(0),set.getLicensee(),set.getSet());
+            repo.save(newSet);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return newSet;
     }
 
 }

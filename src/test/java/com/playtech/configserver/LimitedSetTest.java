@@ -31,12 +31,12 @@ public class LimitedSetTest {
 
     @Test
     public void testLimitedSetRepo(){
-        ApiOperation op1 = new ApiOperation(1, "Chat", "GetMessages");
-        ApiOperation op2 = new ApiOperation(2, "Chat", "SendMessages");
-        ApiOperation op3 = new ApiOperation(3, "Wallet", "Withdraw");
-        ApiOperation op4 = new ApiOperation(4,"Wallet", "GetTransactionHistory");
-        ApiOperation op5 = new ApiOperation(5, "Login", "Login");
-        ApiOperation op6 = new ApiOperation(6, "Login", "Logout");
+        ApiOperation op1 = new ApiOperation("1", "Chat", "GetMessages");
+        ApiOperation op2 = new ApiOperation("2", "Chat", "SendMessages");
+        ApiOperation op3 = new ApiOperation("3", "Wallet", "Withdraw");
+        ApiOperation op4 = new ApiOperation("4","Wallet", "GetTransactionHistory");
+        ApiOperation op5 = new ApiOperation("5", "Login", "Login");
+        ApiOperation op6 = new ApiOperation("6", "Login", "Logout");
 
         List<ApiOperation> opList1 = Arrays.asList(op1, op2, op3);
         List<ApiOperation> opList2 = Arrays.asList(op3, op4, op5);

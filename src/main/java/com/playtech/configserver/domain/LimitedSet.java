@@ -1,5 +1,6 @@
 package com.playtech.configserver.domain;
 
+import lombok.Data;
 import lombok.Value;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;

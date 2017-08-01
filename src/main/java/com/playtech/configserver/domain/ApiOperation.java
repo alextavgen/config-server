@@ -10,7 +10,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "api_ops")
 @Value
 public class ApiOperation {
-    private @Id Integer id;
+    private @Id String id;
     private String service;
     private String operation;
 }
