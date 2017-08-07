@@ -16,5 +16,6 @@ public interface ErrorCodeRepository extends MongoRepository<ErrorCode, String> 
     ErrorCode findByCode(@Param("code") String code);
     ErrorCode findById (@Param ("id") Integer id);
     Integer deleteErrorCodeById (@Param ("id") Integer id);
+
     //List<ErrorCode> findAll();
 }

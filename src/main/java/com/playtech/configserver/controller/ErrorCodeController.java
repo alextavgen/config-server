@@ -1,8 +1,12 @@
 package com.playtech.configserver.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.playtech.configserver.ConfigServerApplication;
 import com.playtech.configserver.domain.ErrorCode;
 import com.playtech.configserver.repositories.ErrorCodeRepository;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +25,7 @@ import java.util.List;
 @CrossOrigin(maxAge = 3600)
 public class ErrorCodeController {
 
+    private static final Logger logger = LoggerFactory.getLogger(ErrorCodeController.class);
     private static final String CORS_HOST = "http://localhost:3004";
 
     private final ErrorCodeRepository repo;
@@ -33,7 +38,7 @@ public class ErrorCodeController {
 
     @RequestMapping(value = "/{id}",method= RequestMethod.GET, produces="application/json")
     public @ResponseBody ErrorCode showErrorCode(@PathVariable("id") Integer id) {
-
+        logger.info( "Received GET request with id:" + id );
         // Do null check for id
         ErrorCode user = repo.findById(id);
         return user;
@@ -42,7 +47,7 @@ public class ErrorCodeController {
     @RequestMapping(method= RequestMethod.GET, produces="application/json")
     public @ResponseBody
     List<ErrorCode> showErrorCodeList() {
-
+        logger.info( "Received GET request for List of Error Codes");
         List<ErrorCode> list = repo.findAll();
         return list;
     }
@@ -54,6 +59,7 @@ public class ErrorCodeController {
         ObjectMapper mapper = new ObjectMapper();
         try {
             errCode = mapper.readValue(corsRequest, ErrorCode.class);
+            logger.info( "Received POST request with id:" + errCode.getId()  );
             repo.save(errCode);
         } catch (IOException e) {
             e.printStackTrace();
@@ -69,6 +75,8 @@ public class ErrorCodeController {
         ObjectMapper mapper = new ObjectMapper();
         try {
             errCode = mapper.readValue(corsRequest, ErrorCode.class);
+            logger.info( "Received PUT request with id:" + errCode.getId()  );
+            repo.deleteErrorCodeById( errCode.getId() );
             repo.save(errCode);
         } catch (IOException e) {
             e.printStackTrace();
@@ -81,6 +89,7 @@ public class ErrorCodeController {
     public ResponseEntity<?> deleteErrorCode(@PathVariable("id") Integer id) {
         try{
             Integer idReturned = repo.deleteErrorCodeById(id);
+            logger.info( "Received DELETE request with id:" + id  );
             return new ResponseEntity<>(idReturned, HttpStatus.OK);
         }catch(Exception ex){
             String errorMessage;
